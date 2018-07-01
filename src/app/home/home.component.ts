@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
       return;
     this.goalsList.unshift(this.goalText);
     this.goalText = '';
+  }
+
+  removeItem() {
+    this.goalsList.shift();
     this._data.changeGoal(this.goalsList);
   }
 }
