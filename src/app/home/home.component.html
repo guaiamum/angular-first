@@ -1,0 +1,22 @@
+<div class="container color-dark">
+  <div class="col">
+    <p>Add a bucket list item</p>
+  </div>
+  <div class="col">
+    <p>Your bucket list ({{goalsList.length}})</p>
+  </div>
+</div>
+
+<div class="container color-light">
+  <div class="col">
+    <p class="sm">Use the form below to add goals</p>
+
+    <form>
+      <input type="text" name="item" id="item" class="txt" placeholder="Life goal" [(ngModel)]="goalText">
+      <input type="submit" class="btn" [value]="btnText" (click)="addItem()">
+    </form>
+  </div>
+  <div class="col">
+    <p class="life-container" *ngFor="let item of goalsList">{{item}}</p>
+  </div>
+</div>
