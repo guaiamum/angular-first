@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   
   goalText: string;
-  goalsList: [string] = ['Learn Angular'];
-  btnText: string = (this.goalsList.length > 1) ? 'Add another item' : 'Add item';
+  goalsList: [string];
+  btnText: string = 'Add item';
 
-  constructor() { }
+  constructor(private _data: DataService) { }
 
   ngOnInit() {
+    this._data.goal.subscribe(res => this.goalsList = res);
+    this._data.changeGoal(this.goalsList);
   }
 
   addItem() {
@@ -21,5 +24,6 @@ export class HomeComponent implements OnInit {
       return;
     this.goalsList.unshift(this.goalText);
     this.goalText = '';
+    this._data.changeGoal(this.goalsList);
   }
 }
