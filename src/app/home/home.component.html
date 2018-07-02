@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="container color-light">
+<div class="container color-light" [@goals]="goalsList.length">
   <div class="col">
     <p class="sm">Use the form below to add goals</p>
 
@@ -17,8 +17,8 @@
     </form>
   </div>
   <div class="col">
-    <p class="life-container" *ngFor="let item of goalsList">{{item}} 
-      <span class="remove" (click)="removeItem()">X</span>
+    <p class="life-container" *ngFor="let item of goalsList; let i = index;">{{item}} 
+      <span class="remove" (click)="removeItem(i)">X</span>
     </p>
   </div>
 </div>
