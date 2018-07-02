@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Started build!"
+ng build --prod --base-href="https://guaiamum.github.io/angular-first/"
+echo "Started deploy!"
+ngh --dir dist/my-app
