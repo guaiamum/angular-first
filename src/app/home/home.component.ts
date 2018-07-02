@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Animations } from '../animations/home.animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [Animations.trigger]
 })
 export class HomeComponent implements OnInit {
   
@@ -26,8 +28,8 @@ export class HomeComponent implements OnInit {
     this.goalText = '';
   }
 
-  removeItem() {
-    this.goalsList.shift();
+  removeItem(index:number) {
+    this.goalsList.splice(index,1);
     this._data.changeGoal(this.goalsList);
   }
 }
